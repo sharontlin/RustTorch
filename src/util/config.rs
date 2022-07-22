@@ -1,7 +1,6 @@
 use std::fmt::Debug;
 use std::fs::File;
 
-use crate::server::util::color::Color;
 use log::info;
 use once_cell::sync::Lazy;
 use serde::{Deserialize, Serialize};
