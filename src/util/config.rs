@@ -4,15 +4,25 @@ use std::fs::File;
 use log::info;
 use once_cell::sync::Lazy;
 use serde::{Deserialize, Serialize};
+use serde_json;
 use std::path::PathBuf;
+
+// This structure describes the configuration JSON file
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Configuration {
+    pub username: String,
+    pub path_to_pass: String,
+    pub url: String,
+    pub image_name: String,
+}
 
 impl Default for Configuration {
     fn default() -> Self {
         Configuration {
-            username: "username",
-            path_to_pass = "../../password.txt",
-            url = "https://nce.org/remote.php/dav",
-            test_image = "test_image.png",
+            username: "username".to_string(),
+            path_to_pass: "../../password.txt".to_string(),
+            url: "https://nce.org/remote.php/dav/files/model.pt".to_string(),
+            image_name: "test_image.png".to_string(),
         }
     }
 }

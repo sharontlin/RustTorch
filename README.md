@@ -4,6 +4,8 @@ Template for loading PyTorch projects into Rust
 
 ## Requirements
 
+- [libtorch](https://github.com/LaurentMazare/tch-rs)
+
 This template is specifically for loading CNN models with image data inputs. Other architectures may require additional changes to the code.
 
 ## Usage 

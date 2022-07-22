@@ -1,3 +1,5 @@
+use rusttorch::util::config::CONFIG;
+
 use reqwest;
 use tch;
 use tch::Tensor;
@@ -6,8 +8,6 @@ use std::fs::File;
 use std::io::{prelude::*, Cursor};
 use tch::Kind::*;
 use core::convert::From;
-
-use crate::util::config::CONFIG;
 
 async fn get_remote_model(username: &str, path_to_pass: &str, url: &str) -> anyhow::Result<()> {
     let client = reqwest::Client::new();
@@ -37,10 +37,10 @@ async fn get_remote_model(username: &str, path_to_pass: &str, url: &str) -> anyh
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let username = CONFIG.username;
-    let path_to_pass = CONFIG.path_to_pass;
-    let url = CONFIG.url;
-    let image_name = CONFIG.image_name;
+    let username = &CONFIG.username;
+    let path_to_pass = &CONFIG.path_to_pass;
+    let url = &CONFIG.url;
+    let image_name = &CONFIG.image_name;
 
     // Fetch remote model
     get_remote_model(username, path_to_pass, url).await.expect("Unable to save model");
@@ -73,7 +73,7 @@ async fn main() -> anyhow::Result<()> {
         let row = row.reshape(&[1, 1200, 1200]);
         
         // Save thresholded image 
-        tch::vision::image::save(&row, format!("thresholded_image_{index}.png", index=i))?;
+        tch::vision::image::save(&row, format!("image_{index}.png", index=i))?;
     }
 
     Ok(())
