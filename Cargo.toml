@@ -1,0 +1,15 @@
+[package]
+name = "rust-torch"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tch = "0.7.2"
+anyhow = "1.0.33"
+reqwest = { version = "0.11", features = ["json"] } # reqwest with JSON parsing support
+futures = "0.3" # for our async / await blocks
+tokio = { version = "1.12.0", features = ["full"] } # for our async runtime
+image = "0.24.2"
+http-auth-basic = "0.3.3"
