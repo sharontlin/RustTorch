@@ -18,8 +18,6 @@ impl Default for Configuration {
     }
 }
 
-// Lazy is a wrapper which causes the value to be initialized on the first access.
-// It makes it possible to use the values as statics.
 pub static CONFIG: Lazy<Configuration> = Lazy::new(load_config);
 
 /// If the configuration file exists, load it. Otherwise, use the default configuration.
